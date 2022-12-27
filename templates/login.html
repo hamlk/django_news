@@ -24,17 +24,7 @@
           {{form.password}}
         </div>
         {% csrf_token %}
-        <div class="two fields">
-          <div class="field">
-            <div class="ui image bottom" style="top:6px;">
-              <img src="{% static 'images/login/checkboxicon.png' %}" alt="" />
-            </div>
-            <label>记住我</label>
-            <div class="ui image bottom" style="top:29px;">
-              <img src="{% static 'images/login/passwordicon.png' %}" alt="" />
-            </div>
-            <label>忘记密码</label>
-          </div>
+
           <div class="field">
             <button class="ui right floated red circular button" type="submit" name="button">登录</button>
           </div>
@@ -46,11 +36,8 @@
         <div class="ui divider"></div>
         <button type="button" name="button" class="ui circular red button backtoindex">
             <img src="{% static 'images/login/homeicon.png' %}" style="position:absolute;left:18%;top:10%;">
-            <h4>首页</h4>
+            <h4><a href="/index" >首页</a></h4>
         </button>
-        <div class="ui image title">
-            <img src="{% static 'images/login/zhiribao.png' %}" alt="" />
-        </div>
       </div>
     </div>
   </body>
