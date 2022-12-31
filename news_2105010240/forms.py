@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 
+from news_2105010240.models import Category
 
 
 def words_validator(comment):
@@ -68,3 +69,16 @@ class EditForm(forms.Form):
 
         if password_confirm != password:
            raise forms.ValidationError("两次输入的密码不一致")
+
+class PForm(forms.Form):
+    category = forms.ChoiceField(label='分类')
+    title = forms.CharField(label='标题', max_length=100)
+    abstract = forms.CharField(label='摘要', max_length=100)
+    intro = forms.CharField(label='标题', max_length=100)
+    image = forms.CharField(label='图片', max_length=100)
+    publish_time = forms.CharField(label='发布时间', widget=forms.Textarea)
+
+    def __init__(self, *args, **kwargs):
+        super(PForm, self).__init__(*args, **kwargs)
+        # self.fields['category'].choices = Category.objects.all().values_list("id", "category")
+

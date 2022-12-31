@@ -184,3 +184,22 @@ def logout(request):
     user_logout(request)
 
     return redirect(to='login')
+
+def Addpage(request):
+    if request.method == 'POST':
+        pform = PForm(request.POST)
+        if pform.is_valid():
+            category = pform.cleaned_data['category']
+            title = pform.cleaned_data['title']
+            abstract = pform.cleaned_data['abstract']
+            intro = pform.cleaned_data['content']
+            image = pform.cleaned_data['image']
+            Article.objects.create(category_id=category, title=title, abstract=abstract,image=image,intro=intro)
+            return render(request, "addpage.html", {'result': '添加成功'})
+    else:
+        form = PForm()
+    return render(request, "addpage.html", {'form': form})
+def deletepage(request, id):
+    page = Article.objects.get(id=id)
+    page.delete()
+    return render(request, 'deletepage.html', {'result': '删除成功'})

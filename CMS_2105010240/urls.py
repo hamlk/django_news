@@ -20,14 +20,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^index/', index, name='index'),
-    url(r'^category/(?P<cate_id>\d+)/$', category, name='category'),
-    url(r'^detail/(?P<article_id>\d+)/$', detail, name='detail'),
-    url(r'^login/', login, name='login'),
-    url(r'^register/', register, name='register'),
-    url(r'^logout/', logout, name='logout'),
-    url(r'^profile/', profile, name='profile'),
+    url('admin/', admin.site.urls),
+    url('index/', index, name='index'),
+    url('addpage/', Addpage, name='Addpage'),
+    url('category/(?P<cate_id>\d+)/$', category, name='category'),
+    url('detail/(?P<article_id>\d+)/$', detail, name='detail'),
+    url('deletepage/(?P<cate_id>\d+)/$', deletepage, name='deletepage'),
+    url('login/', login, name='login'),
+    url('register/', register, name='register'),
+    url('logout/', logout, name='logout'),
+    url('profile/', profile, name='profile'),
 ]
 
 if settings.DEBUG:
